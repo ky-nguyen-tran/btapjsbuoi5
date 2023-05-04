@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tính tiền điện</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Tính tiền điện</h1>
+	<p>Nhập số lượng kWh tiêu thụ:</p>
+	<input type="text" id="tieuThu">
+	<button onclick="calculate()">Tính</button>
+	<p id="result"></p>
+	
+	<script>
+		function calculate() {
+			// Lấy giá trị nhập vào từ input
+			let soDiennang = document.getElementById("tieuThu").value;
+
+			// Chuyển đổi chuỗi nhập vào thành số
+			let soDien = Number(soDiennang);
+
+			// Khởi tạo biến để lưu số tiền phải trả
+			let tongTien = 0;
+
+			// Tính toán tiền phải trả dựa trên quy tắc
+			if (soDien <= 50) {
+			  tongTien = soDien * 500;
+			} else if (soDien <= 100) {
+			  tongTien = 50 * 500 + (soDien - 50) * 650;
+			} else if (soDien <= 200) {
+			  tongTien = 50 * 500 + 50 * 650 + (soDien - 100) * 850;
+			} else if (soDien <= 350) {
+			  tongTien = 50 * 500 + 50 * 650 + 100 * 850 + (soDien - 200) * 1100;
+			} else {
+			  tongTien = 50 * 500 + 50 * 650 + 100 * 850 + 150 * 1100 + (soDien - 350) * 1300;
+			}
+
+			// Hiển thị kết quả trên trang web
+			document.getElementById("result").innerHTML = "Số tiền phải trả: " + tongTien + "đ";
+		}
+	</script>
+</body>
+</html>

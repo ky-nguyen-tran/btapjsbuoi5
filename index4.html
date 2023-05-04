@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tính hóa đơn cáp</title>
+</head>
+<body>
+	<h1>Tính hóa đơn cáp</h1>
+	<form>
+		<label for="customer-type">Loại khách hàng:</label>
+		<select id="customer-type" name="customer-type">
+			<option value="residential">Nhà dân</option>
+			<option value="business">Doanh nghiệp</option>
+		</select>
+		<br>
+		<label for="connections">Số kết nối đầu:</label>
+		<input id="connections" name="connections" type="number" value="10">
+		<br>
+		<label for="channels">Số kênh cao cấp:</label>
+		<input id="channels" name="channels" type="number" value="0">
+		<br>
+		<button type="button" onclick="calculate()">Tính toán</button>
+	</form>
+	<br>
+	<div id="result"></div>
+	
+	<script>
+		function calculate() {
+			// Lấy thông tin khách hàng
+			var customerType = document.getElementById("customer-type").value;
+			var connections = document.getElementById("connections").value;
+			var channels = document.getElementById("channels").value;
+			
+			// Tính toán hóa đơn
+			var processingFee = 0;
+			var serviceFee = 0;
+			var premiumChannelFee = 0;
+			var totalFee = 0;
+			
+			if (customerType == "residential") {
+				processingFee = 4.5;
+				serviceFee = 20.5;
+				premiumChannelFee = 7.5 * channels;
+				totalFee = processingFee + serviceFee + premiumChannelFee;
+			} else if (customerType == "business") {
+				processingFee = 15;
+				serviceFee = 75;
+				if (connections > 10) {
+					serviceFee += (connections - 10) * 5;
+				}
+				premiumChannelFee = 50 * channels;
+				totalFee = processingFee + serviceFee + premiumChannelFee;
+			}
+			
+			// Hiển thị kết quả
+			var result = document.getElementById("result");
+			result.innerHTML = "<h2>Kết quả:</h2><p>Phí xử lý hóa đơn: $" + processingFee.toFixed(2) + "</p><p>Phí dịch vụ cơ bản: $" + serviceFee.toFixed(2) + "</p><p>Phí thuê kênh cao cấp: $" + premiumChannelFee.toFixed(2) + "</p><p>Tổng phí: $" + totalFee.toFixed(2) + "</p>";
+		}
+	</script>
+</body>
+</html>

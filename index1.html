@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tính kết quả</title>
+  </head>
+  <body>
+    <h1>Tính kết quả</h1>
+    <form>
+      <label for="khuVuc">Khu vực ưu tiên</label>
+      <select id="khuVuc">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="X">X</option>
+      </select>
+      <div class="doituong">
+        <label for="doiTuong">Đối tượng ưu tiên</label>
+        <select id="doiTuong" >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="0">0</option>
+        </select>
+      </div>
+      <div>
+        <label for=""> Điểm môn thứ I:</label>
+        <input type="text" id="diemMot" />
+      </div>
+      <div>
+        <label for=""> Điểm môn thứ II:</label>
+        <input type="text" id="diemHai" />
+      </div>
+      <div>
+        <label for=""> Điểm môn thứ III:</label>
+        <input type="text" id="diemBa" />
+      </div>
+      <div>
+        <label for=""> Điểm chuẩn:</label>
+        <input type="text" id="diemChuan" />
+      </div>
+      <button type="button" onclick="tinhDiem()">Tính</button>
+    </form>
+
+    <div id="ketQua"></div>
+
+   <script src="./main.js"></script>
+      
+  </body>
+</html>
